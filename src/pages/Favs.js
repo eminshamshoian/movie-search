@@ -1,11 +1,8 @@
-import React from 'react'
+import React from 'react';
+import Layout from '../components/Layout';
 
 const Favs = () => {
-    return (
-        <div>
-           This is favs 
-        </div>
-    )
-}
+  return <Layout>This is starred</Layout>;
+};
 
-export default Favs
+export default Favs;
