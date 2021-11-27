@@ -17,7 +17,7 @@ const ShowCard = ({ id, image, name, summary }) => {
 
       <p>{summaryAsText}</p>
 
-      <div className="btns">
+      <div className="custom-button">
         <Link to={`/show/${id}`}>Read more</Link>
         <button type="button">Star me</button>
       </div>

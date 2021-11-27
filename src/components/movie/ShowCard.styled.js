@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { SearchCard } from '../styled';
 
 export const StyledShowCard = styled(SearchCard)`
-  .btns {
+  .custom-button {
     margin-top: 15px;
     display: flex;
     justify-content: space-between;
