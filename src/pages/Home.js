@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import ActorLayout from '../components/actor/ActorLayout';
 import Layout from '../components/Layout';
+import ShowLayout from '../components/movie/ShowLayout';
 import { apiGet } from '../util/config';
 
 const Home = () => {
@@ -37,11 +39,11 @@ const Home = () => {
     }
 
     if (results && results.length > 0) {
-      return results[0].show
-        ? results.map(item => <div key={item.show.id}>{item.show.name}</div>)
-        : results.map(item => (
-            <div key={item.person.id}>{item.person.name}</div>
-          ));
+      return results[0].show ? (
+        <ShowLayout data={results} />
+      ) : (
+        <ActorLayout data={results} />
+      );
     }
 
     return null;
