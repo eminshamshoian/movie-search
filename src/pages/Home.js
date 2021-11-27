@@ -7,7 +7,7 @@ import { apiGet } from '../util/config';
 const Home = () => {
   const [input, setInput] = useState('');
   const [results, setResults] = useState(null);
-  const [searchOption, setSearchOption] = useState('movies');
+  const [searchOption, setSearchOption] = useState('shows');
 
   const isMoviesSearch = searchOption === 'shows';
 
@@ -26,8 +26,6 @@ const Home = () => {
   const onRadioChange = e => {
     setSearchOption(e.target.value);
   };
-
-  console.log(searchOption);
 
   const onInChange = e => {
     setInput(e.target.value);
