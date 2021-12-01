@@ -3,21 +3,22 @@ import ShowCard from './ShowCard';
 
 import { FlexGrid } from '../styled';
 
-import IMAGE_NF from '../../images/not-found.png';
+import IMAGE_NOT_FOUND from '../../images/not-found.png';
 import { useShows } from '../../util/custom-hooks';
 
-const ShowLayout = ({ data }) => {
-  const [favShows, dispatchFavs] = useShows();
+const ShowGrid = ({ data }) => {
+  const [starredShows, dispatchStarred] = useShows();
+
   return (
     <FlexGrid>
       {data.map(({ show }) => {
-        const isStarred = favShows.includes(show.id);
+        const isStarred = starredShows.includes(show.id);
 
-        const onFavClick = () => {
+        const onStarClick = () => {
           if (isStarred) {
-            dispatchFavs({ type: 'REMOVE', showId: show.id });
+            dispatchStarred({ type: 'REMOVE', showId: show.id });
           } else {
-            dispatchFavs({ type: 'ADD', showId: show.id });
+            dispatchStarred({ type: 'ADD', showId: show.id });
           }
         };
 
@@ -26,9 +27,9 @@ const ShowLayout = ({ data }) => {
             key={show.id}
             id={show.id}
             name={show.name}
-            image={show.image ? show.image.medium : IMAGE_NF}
+            image={show.image ? show.image.medium : IMAGE_NOT_FOUND}
             summary={show.summary}
-            onFavClick={onFavClick}
+            onStarClick={onStarClick}
             isStarred={isStarred}
           />
         );
@@ -37,4 +38,4 @@ const ShowLayout = ({ data }) => {
   );
 };
 
-export default ShowLayout;
+export default ShowGrid;

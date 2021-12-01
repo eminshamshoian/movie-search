@@ -1,18 +1,19 @@
 import React from 'react';
-import { Nav } from './Nav';
+import Navs from './Navs';
 import Title from './Title';
 
-const Layout = ({ children }) => {
+const MainPageLayout = ({ children }) => {
   return (
     <div>
       <Title
-        title="Movie Search Engine"
-        desc="Search for the best titles. Just type in the search box to begin"
+        title="Box Office"
+        subtitle="Are you looking for a movie or an actor?"
       />
-      <Nav />
+      <Navs />
+
       {children}
     </div>
   );
 };
 
-export default Layout;
+export default MainPageLayout;
