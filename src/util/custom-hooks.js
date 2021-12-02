@@ -1,4 +1,18 @@
 import { useReducer, useEffect } from 'react';
+import withFirebaseAuth from 'react-with-firebase-auth'
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import 'firebase/auth';
+import { addDoc, getDocs, collection } from "firebase/firestore"; 
+
+import firebaseConfig from '../firebaseConfig';
+
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+
+const db = firebase.firestore();
+db.settings({ timestampsInSnapshots: true }); 
 
 function showsReducer(prevState, action) {
   switch (action.type) {
@@ -21,10 +35,16 @@ function usePersistedReducer(reducer, initialState, key) {
 
     return persisted ? JSON.parse(persisted) : initial;
   });
+ 
+  
+    const docRef =  addDoc(collection(db, "Favorite Lists"), {
+      userkey: JSON.stringify(state)
+    });
+    
+  
 
-  useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(state));
-  }, [state, key]);
+
+  
 
   return [state, dispatch];
 }
