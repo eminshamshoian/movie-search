@@ -1,14 +1,18 @@
 import { useReducer, useEffect } from 'react';
+
 import withFirebaseAuth from 'react-with-firebase-auth'
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
-import 'firebase/auth';
-import { addDoc, getDocs, collection } from "firebase/firestore"; 
+import { getAuth, FirebaseUser } from "firebase/auth";
+import { addDoc, getDocs, collection, setDoc, doc } from "firebase/firestore"; 
+
 
 import firebaseConfig from '../firebaseConfig';
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+
 
 
 const db = firebase.firestore();
@@ -29,16 +33,24 @@ function showsReducer(prevState, action) {
   }
 }
 
-function usePersistedReducer(reducer, initialState, key) {
+function usePersistedReducer(reducer, initialState) {
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const userId = user.email;
+  const docRefr = doc(db, "Favorite Lists", userId);
   const [state, dispatch] = useReducer(reducer, initialState, initial => {
-    const persisted = localStorage.getItem(key);
+
+    const persisted = db.collection("Favorite Lists").doc(userId).data;
 
     return persisted ? JSON.parse(persisted) : initial;
+    
   });
  
-  
-    const docRef =  addDoc(collection(db, "Favorite Lists"), {
-      userkey: JSON.stringify(state)
+    
+
+    const docRef =  setDoc(doc(db, "Favorite Lists", userId), {
+      
+      userId: JSON.stringify(state)
     });
     
   
@@ -49,6 +61,6 @@ function usePersistedReducer(reducer, initialState, key) {
   return [state, dispatch];
 }
 
-export function useShows(key = 'shows') {
-  return usePersistedReducer(showsReducer, [], key);
+export function useShows() {
+  return usePersistedReducer(showsReducer, []);
 }
