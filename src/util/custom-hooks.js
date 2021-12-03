@@ -37,7 +37,7 @@ function usePersistedReducer(reducer, initialState) {
   const auth = getAuth();
   const user = auth.currentUser;
   const userId = user.email;
-  const docRefr = doc(db, "Favorite Lists", userId);
+ 
   const [state, dispatch] = useReducer(reducer, initialState, initial => {
 
     const persisted = db.collection("Favorite Lists").doc(userId).data;
@@ -47,12 +47,12 @@ function usePersistedReducer(reducer, initialState) {
   });
  
     
-
+    if(JSON.stringify(state) !== "[]"){
     const docRef =  setDoc(doc(db, "Favorite Lists", userId), {
       
       userId: JSON.stringify(state)
     });
-    
+  }
   
 
 
