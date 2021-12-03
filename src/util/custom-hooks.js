@@ -59,7 +59,7 @@ function usePersistedReducer(reducer, initialState) {
   });
  
   console.log(JSON.stringify(state));
-   if(favoriteState !== "[]" ){
+   if(JSON.stringify(state) !== "[]" ){
     const docRef =  setDoc(doc(db, "Favorite Lists", userId), {
       
       userId: JSON.stringify(state)
