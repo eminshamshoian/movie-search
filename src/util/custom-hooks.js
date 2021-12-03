@@ -5,13 +5,14 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { getAuth, FirebaseUser } from "firebase/auth";
-import { addDoc, getDocs, collection, setDoc, doc } from "firebase/firestore"; 
+import { addDoc, getDocs, collection, setDoc, doc, getDoc } from "firebase/firestore"; 
 
 
 import firebaseConfig from '../firebaseConfig';
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
 
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+let favoriteState = [];
 
 
 
@@ -37,22 +38,26 @@ function usePersistedReducer(reducer, initialState) {
   const auth = getAuth();
   const user = auth.currentUser;
   const userId = user.email;
+  const temp = "userId";
  
   const [state, dispatch] = useReducer(reducer, initialState, initial => {
 
     const persisted = db.collection("Favorite Lists").doc(userId).data;
-
+    
+    console.log(persisted);
     return persisted ? JSON.parse(persisted) : initial;
     
   });
  
-    
-    if(JSON.stringify(state) !== "[]"){
+  console.log(JSON.stringify(state));
+   
     const docRef =  setDoc(doc(db, "Favorite Lists", userId), {
       
       userId: JSON.stringify(state)
+      
     });
-  }
+    favoriteState = state;
+  
   
 
 
@@ -62,5 +67,5 @@ function usePersistedReducer(reducer, initialState) {
 }
 
 export function useShows() {
-  return usePersistedReducer(showsReducer, []);
+  return usePersistedReducer(showsReducer, favoriteState);
 }
