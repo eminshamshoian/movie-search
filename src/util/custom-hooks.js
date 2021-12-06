@@ -37,6 +37,9 @@ function showsReducer(prevState, action) {
 async function getDoc(userId) {
   const snapshot = await db.collection('Favorite Lists').doc(userId).get();
   const data = snapshot.data();
+   favoriteState = `${data.userId}`;
+  console.log(favoriteState)
+  
   return data;
 }
 function usePersistedReducer(reducer, initialState) {
