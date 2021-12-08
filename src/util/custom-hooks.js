@@ -37,10 +37,12 @@ function showsReducer(prevState, action) {
 async function getDoc(userId) {
   const snapshot = await db.collection('Favorite Lists').doc(userId).get();
   const data = snapshot.data();
-   favoriteState = `${data.userId}`;
-  console.log(favoriteState)
+   const json = data.userId;
+   favoriteState = JSON.parse(json);
+   
+  console.log(JSON.parse(json))
   
-  return data;
+  return json;
 }
 function usePersistedReducer(reducer, initialState) {
   const auth = getAuth();
@@ -51,17 +53,18 @@ function usePersistedReducer(reducer, initialState) {
   
   const [state, dispatch] = useReducer(reducer, initialState, initial => {
 
-    const tempStore = getDoc(userId);
-    console.log(tempStore);
+     const tempStore = getDoc(userId);
+     console.log(tempStore);
 
     const persisted = db.collection("Favorite Lists").doc(userId).data;
     
-    console.log(persisted);
-    return persisted ? JSON.parse(persisted) : initial;
+   
+    return persisted ? JSON.parse(favoriteState) : initial;
     
   });
+  console.log(state)
  
-  console.log(JSON.stringify(state));
+  console.log(favoriteState);
    if(JSON.stringify(state) !== "[]" ){
     const docRef =  setDoc(doc(db, "Favorite Lists", userId), {
       
