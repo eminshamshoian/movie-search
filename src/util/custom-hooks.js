@@ -36,9 +36,10 @@ function showsReducer(prevState, action) {
 
 async function getDoc(userId) {
   let json;
-  if(db.collection('Favorite Lists').doc(userId).exists){
+  
   const snapshot = await db.collection('Favorite Lists').doc(userId).get();
   const data = snapshot.data();
+  if(snapshot.exists){
    json = data.userId;
    favoriteState = JSON.parse(json);
    
