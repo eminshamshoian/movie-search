@@ -36,8 +36,8 @@ class App extends Component {
 
           {
             user
-              ? <button onClick={signOut}>Sign out</button>
-              : <button onClick={signInWithGoogle}>Sign in with Google</button>
+              ? <button style={{"font-size":"12pt"}} onClick={signOut}>Sign out</button>
+              : <button style={{"font-size":"12pt"}} onClick={signInWithGoogle}>Sign in with Google</button>
           }
         </header>
       <Switch>

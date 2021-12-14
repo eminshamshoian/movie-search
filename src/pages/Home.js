@@ -47,17 +47,36 @@ const Home = () => {
     return null;
   };
 
+  const searchBarStyle = {
+    "display": "block",
+    "margin": "10px auto",
+    "width": "250px",
+    "padding": "10px"
+  }
+
+  const styles = {
+    "margin": "10px auto",
+    "padding": "5px"
+  }
+
+  const btnStyle = {
+    "margin-bottom": "15px",
+    "padding": "5px",
+    "font-size": "12pt"
+  }
+
   return (
     <Layout>
-      <input
+      <input 
+        style={searchBarStyle}
         type="text"
         placeholder="Search"
         onChange={onInChange}
         onKeyDown={onKeyDown}
         value={input}
       />
-      <div>
-        <label htmlFor="shows-search">
+      <div style={styles}>
+        <label htmlFor="shows-search" style={{"padding": "0 7px"}}>
           Movies
           <input
             id="shows-search"
@@ -68,7 +87,7 @@ const Home = () => {
           />
         </label>
 
-        <label htmlFor="actors-search">
+        <label htmlFor="actors-search" style={{"padding": "0 7px"}}>
           Actors
           <input
             id="actors-search"
@@ -79,7 +98,7 @@ const Home = () => {
           />
         </label>
       </div>
-      <button type="button" onClick={onSearch}>
+      <button type="button" onClick={onSearch} style={btnStyle}>
         Search
       </button>
       {movieResult()}

@@ -6,16 +6,23 @@ const LINKS = [
   { to: '/favs', text: 'Favs' },
 ];
 
+const linkStyle = {
+  "display": "block",
+  "text-align": "center",
+  "margin": "10px auto 10px auto",
+  "width": "60px",
+  "padding": "10px",
+  "backgroundColor": "lightGrey",
+  "border-radius": "25px",
+  "text-decoration": "none"
+}
+
 const Navs = () => {
   return (
     <div>
-      <ul>
         {LINKS.map(item => (
-          <li key={item.to}>
-            <Link to={item.to}>{item.text}</Link>
-          </li>
+            <Link style={linkStyle} to={item.to}>{item.text}</Link>
         ))}
-      </ul>
     </div>
   );
 };
