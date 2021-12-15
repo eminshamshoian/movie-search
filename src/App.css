@@ -32,6 +32,16 @@ html {
   color: #61dafb;
 }
 
+.button {
+  color: #000;
+  font-size: 17px;
+  padding: 5px;
+  min-width: 90px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

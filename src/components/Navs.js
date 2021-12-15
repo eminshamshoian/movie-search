@@ -11,8 +11,8 @@ const linkStyle = {
   "text-align": "center",
   "margin": "10px auto 10px auto",
   "width": "60px",
-  "padding": "10px",
-  "backgroundColor": "lightGrey",
+  "padding": "8px",
+  "backgroundColor": "#eee",
   "border-radius": "25px",
   "text-decoration": "none"
 }

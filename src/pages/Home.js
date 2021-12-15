@@ -59,12 +59,6 @@ const Home = () => {
     "padding": "5px"
   }
 
-  const btnStyle = {
-    "margin-bottom": "15px",
-    "padding": "5px",
-    "font-size": "12pt"
-  }
-
   return (
     <Layout>
       <input 
@@ -98,7 +92,7 @@ const Home = () => {
           />
         </label>
       </div>
-      <button type="button" onClick={onSearch} style={btnStyle}>
+      <button className='button' type="button" onClick={onSearch}>
         Search
       </button>
       {movieResult()}
