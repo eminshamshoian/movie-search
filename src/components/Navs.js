@@ -1,3 +1,6 @@
+
+
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -6,23 +9,16 @@ const LINKS = [
   { to: '/favs', text: 'Favs' },
 ];
 
-const linkStyle = {
-  "display": "block",
-  "text-align": "center",
-  "margin": "10px auto 10px auto",
-  "width": "60px",
-  "padding": "8px",
-  "backgroundColor": "#eee",
-  "border-radius": "25px",
-  "text-decoration": "none"
-}
-
 const Navs = () => {
   return (
-    <div>
+    <div className='nav'>
+      <ul>
         {LINKS.map(item => (
-            <Link style={linkStyle} to={item.to}>{item.text}</Link>
+          <li key={item.to}>
+            <Link to={item.to}>{item.text}</Link>
+          </li>
         ))}
+      </ul>
     </div>
   );
 };

@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
+import { Button } from "antd";
+
+import { apiGet } from '../util/config';
+
 import ActorLayout from '../components/actor/ActorLayout';
 import Layout from '../components/Layout';
 import ShowLayout from '../components/movie/ShowLayout';
-import { apiGet } from '../util/config';
+
+import Navs from '../components/Navs';
+
+
 
 const Home = () => {
   const [input, setInput] = useState('');
@@ -47,56 +54,55 @@ const Home = () => {
     return null;
   };
 
-  const searchBarStyle = {
-    "display": "block",
-    "margin": "10px auto",
-    "width": "250px",
-    "padding": "10px"
-  }
-
-  const styles = {
-    "margin": "10px auto",
-    "padding": "5px"
-  }
-
   return (
-    <Layout>
-      <input 
-        style={searchBarStyle}
-        type="text"
-        placeholder="Search"
-        onChange={onInChange}
-        onKeyDown={onKeyDown}
-        value={input}
-      />
-      <div style={styles}>
-        <label htmlFor="shows-search" style={{"padding": "0 7px"}}>
-          Movies
-          <input
-            id="shows-search"
-            type="radio"
-            value="shows"
-            checked={isMoviesSearch}
-            onChange={onRadioChange}
-          />
-        </label>
-
-        <label htmlFor="actors-search" style={{"padding": "0 7px"}}>
-          Actors
-          <input
-            id="actors-search"
-            type="radio"
-            value="people"
-            checked={!isMoviesSearch}
-            onChange={onRadioChange}
-          />
-        </label>
+      <div>
+        <Layout/>
+        <div className='nav-bar'>
+          {/* <Navs/> */}
+          <div className='searchComp'>
+            <div>
+              <div className='labels'>
+                <div>
+                  <label htmlFor="shows-search">
+                  Movies
+                  <input
+                    id="shows-search"
+                    type="radio"
+                    value="shows"
+                    checked={isMoviesSearch}
+                    onChange={onRadioChange}
+                  />
+                  </label>
+                </div>
+                <div>
+                  <label htmlFor="actors-search">
+                  Actors
+                  <input
+                    id="actors-search"
+                    type="radio"
+                    value="people"
+                    checked={!isMoviesSearch}
+                    onChange={onRadioChange}
+                  />
+                  </label>
+                </div>
+              </div>
+              <input
+                type="text"
+                className="searchBar"
+                placeholder="Search"
+                onChange={onInChange}
+                onKeyDown={onKeyDown}
+                value={input}
+              />
+          </div>
+          <Button type="primary" onClick={onSearch}>
+            Search
+          </Button>
+          </div>
+        </div>
+        {movieResult()}
       </div>
-      <button className='button' type="button" onClick={onSearch}>
-        Search
-      </button>
-      {movieResult()}
-    </Layout>
   );
 };
 

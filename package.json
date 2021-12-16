@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "antd": "^4.17.3",
     "firebase": "^9.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -29,7 +30,7 @@
     "workbox-streams": "^5.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts --openssl-legacy-provider start",
     "build": "npm run clear && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

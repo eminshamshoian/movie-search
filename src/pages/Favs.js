@@ -4,6 +4,9 @@ import { useShows } from '../util/custom-hooks';
 import { apiGet } from '../util/config';
 import ShowLayout from '../components/movie/ShowLayout';
 
+import Navs from '../components/Navs';
+
+
 const Starred = () => {
   const [starred] = useShows();
 
@@ -31,12 +34,14 @@ const Starred = () => {
   }, [starred]);
 
   return (
-    <Layout>
-      {isLoading && <div>Shows are still loading</div>}
-      {error && <div>Error occured: {error}</div>}
-      {!isLoading && !shows && <div>No shows were added</div>}
-      {!isLoading && !error && shows && <ShowLayout data={shows} />}
-    </Layout>
+      <Layout>
+        
+        
+        {isLoading && <div>Shows are still loading</div>}
+        {error && <div>Error occured: {error}</div>}
+        {!isLoading && !shows && <div>No shows were added</div>}
+        {!isLoading && !error && shows && <ShowLayout data={shows} />}
+      </Layout>
   );
 };
 
