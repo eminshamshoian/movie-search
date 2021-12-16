@@ -1,11 +1,14 @@
+// General styles page
 import styled from 'styled-components';
 
+// FlexGrid css styles used in all cards and layouts
 export const FlexGrid = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 `;
 
+// Search card component
 export const SearchCard = styled.div`
   width: 300px;
   height: 100%;
@@ -31,6 +34,7 @@ export const SearchCard = styled.div`
   }
 `;
 
+// Start CSS component that displays the gold star with dynamic styling to change its color if it is active
 export const Star = styled.div`
   display: inline-block;
   width: 18px;

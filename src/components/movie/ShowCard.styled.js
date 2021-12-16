@@ -1,6 +1,8 @@
+// Styles for the movie section
 import styled from 'styled-components';
 import { SearchCard } from '../styled';
 
+// CSS styles inside of a js file component
 export const StyledShowCard = styled(SearchCard)`
   .custom-button {
     margin-top: 15px;
