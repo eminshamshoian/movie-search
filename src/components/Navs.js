@@ -1,3 +1,6 @@
+
+
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -8,7 +11,7 @@ const LINKS = [
 
 const Navs = () => {
   return (
-    <div>
+    <div className='nav'>
       <ul>
         {LINKS.map(item => (
           <li key={item.to}>

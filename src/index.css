@@ -1,6 +1,63 @@
-body {
+*{
+  box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+}
+
+body {
   font-size: 18px;
   margin: 0;
-  padding-top: 40px;
+  background-color: #dadaff !important; 
+}
+
+.mainTitle{
+  color: red;
+  text-align: center;
+  font-weight: bold;
+  font-size: 3em;
+}
+.mainSub{
+  color: blue;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+ul li{
+  display: inline-grid;
+  margin: 10px;
+  font-size: 20px;
+  
+} 
+
+.wrapper{
+  padding: 40px 10% 0 10%;
+}
+
+.nav-bar{
+  display: grid;
+  padding: 10px;
+  grid-template-columns: 1fr;
+}
+
+.nav ul{
+  margin: 0px;
+  padding: 0px;
+}
+
+.searchComp{
+  max-width: 300px;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items:center;
+  grid-gap: 20px;
+  justify-self: center;
+  justify-content: center;
+}
+.labels{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.search-result{
+  padding: 10px;
+
 }
